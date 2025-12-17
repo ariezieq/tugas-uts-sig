@@ -1,0 +1,236 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", sans-serif;
+}
+#map {
+  height: 100vh;
+  width: 100%;
+}
+
+.info-panel {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  width: 300px;
+}
+h3 {
+  margin-top: 0;
+  color: #2c3e50;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 10px;
+}
+.data-group {
+  margin-bottom: 15px;
+}
+.label {
+  font-size: 0.85em;
+  color: #7f8c8d;
+}
+.value {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #2c3e50;
+}
+.weather-box {
+  background: #e3f2fd;
+  padding: 10px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.status-active {
+  color: #27ae60;
+  font-weight: bold;
+}
+
+.simulation-controls {
+  position: absolute;
+  top: 10px;
+  left: 50px;
+  z-index: 1000;
+  display: flex;
+  gap: 10px;
+}
+
+.simulation-controls button {
+  padding: 10px 15px;
+  background-color: #2980b9;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s;
+}
+
+.simulation-controls button:hover {
+  background-color: #3498db;
+  transform: translateY(-2px);
+}
+
+.mode-active {
+  background-color: #27ae60 !important;
+  border: 2px solid white;
+}
+
+.cursor-crosshair {
+  cursor: crosshair !important;
+}
+
+@media (max-width: 600px) {
+  .info-panel {
+    width: auto;
+    left: 10px;
+    right: 10px;
+    top: auto;
+    bottom: 20px;
+  }
+
+  .simulation-controls {
+    top: 10px;
+    left: 10px;
+    flex-direction: column;
+  }
+
+  .leaflet-bottom.leaflet-right {
+    display: none;
+  }
+}
+.ambulance-list-container {
+  position: absolute;
+  bottom: 30px;
+  left: 10px;
+  z-index: 1000;
+  width: 250px;
+  max-height: 400px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.amb-card {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  font-family: "Segoe UI", sans-serif;
+  border-left: 5px solid #333;
+  transition: all 0.3s;
+  animation: slideIn 0.3s ease-out;
+}
+
+.amb-card h4 {
+  margin: 0 0 5px 0;
+  font-size: 0.95em;
+  color: #2c3e50;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 3px;
+}
+
+.amb-card p {
+  margin: 2px 0;
+  font-size: 0.85em;
+  color: #7f8c8d;
+}
+
+.amb-card .status-text {
+  font-weight: bold;
+  color: #e67e22;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.leaflet-tooltip.kec-tooltip {
+  background-color: rgba(0, 0, 0, 0.8);
+  border: none;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 4px;
+  padding: 5px 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.leaflet-tooltip-top:before,
+.leaflet-tooltip-bottom:before,
+.leaflet-tooltip-left:before,
+.leaflet-tooltip-right:before {
+  display: none;
+}
+
+.weather-widget {
+  background: linear-gradient(to bottom right, #3498db, #2980b9);
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.w-location {
+  font-size: 0.9em;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 5px;
+}
+
+.w-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.w-main img {
+  width: 60px;
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+}
+
+.big-temp {
+  font-size: 2.5em;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.desc-text {
+  font-size: 0.85em;
+  opacity: 0.9;
+  text-transform: capitalize;
+}
+
+.w-details {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9em;
+}
+
+.detail-item small {
+  font-size: 0.7em;
+  opacity: 0.7;
+}
